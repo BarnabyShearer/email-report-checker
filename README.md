@@ -1,4 +1,6 @@
-# SMTP Report Monitoring Utilities
+# email-report-checker
+
+RFC 7489 & 8460 SMTP Report Monitoring Utilities.
 
 Note these are for my hobby domain, do not try running them on even moderate traffic MTAs
 
@@ -32,3 +34,6 @@ And report your statistics
 
     jq '[.[] | [.policies[].summary["total-successful-session-count"]] | add] | add' tls.json
     jq '[.[] | [.policies[].summary["total-failure-session-count"]] | add] | add' tls.json
+
+
+
