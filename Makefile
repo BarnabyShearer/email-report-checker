@@ -1,5 +1,9 @@
-test:
+format:
+	isort .
 	black .
-	mypy .
-	python3 -m coverage run --branch --source . -m unittest
-	python3 -m coverage report -m
+
+test:
+	tox -e py39
+
+test_all:
+	tox

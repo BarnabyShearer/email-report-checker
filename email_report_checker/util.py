@@ -1,35 +1,41 @@
-#! /usr/bin/env python3
-from typing import Any, Callable, List, TypeVar, Generator
+"""Utils."""
 
 import argparse
 import email.message
 import getpass
 import imaplib
 import json
+from typing import Any, Callable, Generator, List, TypeVar
 
 T = TypeVar("T")
 Report = Callable[[imaplib.IMAP4], List[Any]]
 
 
 def isok(check: str, data: List[T]) -> List[T]:
+    """Convert strings other then OK into exceptions."""
     if check != "OK":
         raise Exception(check)
     return data
 
 
-def search(mail, criteria: str) -> Generator[email.message.Message, None, None]:
+def search(
+    mail: imaplib.IMAP4, criteria: str
+) -> Generator[email.message.Message, None, None]:
+    """IMAP search."""
     for uid in isok(*mail.uid("SEARCH", criteria))[0].split():
         yield email.message_from_bytes(isok(*mail.uid("FETCH", uid, "(RFC822)"))[0][1])
 
 
 def imap(host: str, user: str, password: str, folder: str, report: Report) -> List[Any]:
+    """Open IMAP email."""
     with imaplib.IMAP4_SSL(host) as mail:
         mail.login(user, password)
         mail.select(folder)
         return report(mail)
 
 
-def cli(report: Report):
+def cli(report: Report) -> None:
+    """Wrap command line."""
     parser = argparse.ArgumentParser()
     parser.add_argument("host", help="IMAP host connect to (SSL required)")
     parser.add_argument("user")
