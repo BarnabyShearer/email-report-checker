@@ -3,5 +3,5 @@ Installation
 
 ::
 
-    pip install email-report-checker
+    python3 -m pip install email-report-checker
 
