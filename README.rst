@@ -14,7 +14,7 @@ Install
 
 ::
 
-    pip install email-report-checker
+    python3 -m pip install email-report-checker
 
 Note these are for my hobby domain, do not try running them on even moderate traffic MTAs
 
