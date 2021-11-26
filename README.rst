@@ -2,17 +2,16 @@
 email-report-checker
 ====================
 .. image:: https://readthedocs.org/projects/email-report-checker/badge/?version=latest
-    :target: https://email-report-checker.readthedocs.io/en/latest/?badge=latest
-
-.. image:: https://badge.fury.io/py/email-report-checker.svg
-    :target: https://badge.fury.io/py/email-report-checker
+    :target: https://email-report-checker.readthedocs.io/en/latest/
+.. image:: https://img.shields.io/pypi/v/email-report-checker?color=success
+    :target: https://pypi.org/project/email-report-checker
 
 RFC 7489 & 8460 SMTP Report Monitoring Utilities.
 
 Install
 -------
 
-::
+.. code-block:: bash
 
     python3 -m pip install email-report-checker
 
