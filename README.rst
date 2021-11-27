@@ -26,13 +26,13 @@ First ensure your DMARC DNS TXT record contains `rua` and `ruf` to request repor
 
 Then load the reports via IMAP:
 
-::
+.. code-block:: bash
 
     ./dmarc.py m.zi.is b@zi.is Archive > dmarc.json
 
 And report your statistics
 
-::
+.. code-block:: bash
 
     jq '[ .[].record.row | select(.source_ip == "68.183.35.248") | select(.policy_evaluated.dkim == "pass") | .count | tonumber] | add' dmarc.json
     jq '[ .[].record.row | select(.source_ip == "68.183.35.248") | select(.policy_evaluated.dkim == "fail") | .count | tonumber] | add' dmarc.json
@@ -49,13 +49,13 @@ First create a DNS TXT record to request reports:
 
 Then load the reports via IMAP:
 
-::
+.. code-block:: bash
 
     ./tls.py m.zi.is b@zi.is Archive > tls.json
 
 And report your statistics
 
-::
+.. code-block:: bash
 
     jq '[.[] | [.policies[].summary["total-successful-session-count"]] | add] | add' tls.json
     jq '[.[] | [.policies[].summary["total-failure-session-count"]] | add] | add' tls.json
