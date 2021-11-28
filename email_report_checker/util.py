@@ -5,6 +5,7 @@ import email.message
 import getpass
 import imaplib
 import json
+import sys
 from typing import Any, Callable, Generator, List, TypeVar
 
 T = TypeVar("T")
@@ -49,4 +50,4 @@ def cli(report: Report) -> None:
         folder=args.folder,
         report=report,
     )
-    print(json.dumps(data, indent=2))
+    json.dump(data, sys.stdout, indent=2)

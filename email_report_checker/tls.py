@@ -26,6 +26,7 @@ def report(mail: imaplib.IMAP4) -> List[Any]:
         for x in [
             get_tls_report(m) for m in search(mail, '(HEADER TLS-Report-Domain "")')
         ]
+        if x
     ]
 
 
