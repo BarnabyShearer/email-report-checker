@@ -19,7 +19,7 @@ Then load the reports via IMAP:
 
 .. code-block:: bash
 
-    ./dmarc.py m.zi.is b@zi.is Archive > dmarc.json
+    dmarc-report-checker m.zi.is b@zi.is Archive > dmarc.json
 
 And report your statistics
 
@@ -42,7 +42,7 @@ Then load the reports via IMAP:
 
 .. code-block:: bash
 
-    ./tls.py m.zi.is b@zi.is Archive > tls.json
+    tls-report-cheker m.zi.is b@zi.is Archive > tls.json
 
 And report your statistics
 
